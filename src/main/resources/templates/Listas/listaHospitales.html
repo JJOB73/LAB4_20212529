@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+    </tr>
+    <tr th:each="hos : ${hospitalList}">
+        <td th:text="${hos.id}"></td>
+        <td th:text="${hos.nombre}"></td>
+        <td th:text="${hos.direccion}"></td>
+        <td th:text="${hos.telefono}"></td>
+
+
+    </tr>
+</table>
+</body>
+</html>
