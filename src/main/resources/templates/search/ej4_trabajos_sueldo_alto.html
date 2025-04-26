@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleados con Sueldo Mayor a 15000</title>
+</head>
+<body>
+<h2>Empleados con Sueldo Mayor a 15000</h2>
+<a th:href="@{/search}">Regresar</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Fin</th>
+        <th>Puesto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${lista}">
+        <td th:text="${item.firstName}"></td>
+        <td th:text="${item.lastName}"></td>
+        <td th:text="${item.startDate}"></td>
+        <td th:text="${item.endDate}"></td>
+        <td th:text="${item.jobTitle}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
