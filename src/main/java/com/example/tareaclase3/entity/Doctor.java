@@ -16,9 +16,9 @@ public class Doctor {
 
     private String especialidad;
 
-
-    @OneToMany(mappedBy = "hospital")
-    private List<Doctor> doctores;
+    @ManyToOne
+    @JoinColumn(name= "hospital_id")
+    private Doctor doctor;
 }
 
 
