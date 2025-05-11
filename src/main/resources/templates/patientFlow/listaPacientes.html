@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes</title>
+</head>
+<body>
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+    
+    <h2>Lista de Pacientes</h2>
+
+    <div style="margin-bottom: 20px;">
+        <a th:href="@{/pacientes/derivar}" class="button">Derivar pacientes</a>
+    </div>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Género</th>
+                <th>Diagnóstico</th>
+                <th>Fecha Cita</th>
+                <th>N° Habitación</th>
+                <th>Hospital</th>
+                <th>Doctor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${listaPacientes.empty}">
+                <td colspan="9">No hay pacientes registrados</td>
+            </tr>
+            <tr th:each="paciente : ${listaPacientes}">
+                <td th:text="${paciente.id}"></td>
+                <td th:text="${paciente.nombre}"></td>
+                <td th:text="${paciente.edad}"></td>
+                <td th:text="${paciente.genero}"></td>
+                <td th:text="${paciente.diagnostico}"></td>
+                <td th:text="${#temporals.format(paciente.fecha_cita, 'dd/MM/yyyy')}"></td>
+                <td th:text="${paciente.numero_habitacion}"></td>
+                <td th:text="${paciente.hospital.nombre}"></td>
+                <td th:text="${paciente.doctor.nombre}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
