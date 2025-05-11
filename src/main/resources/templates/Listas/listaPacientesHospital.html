@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes del Hospital</title>
+</head>
+<body>
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+    
+    <h2 th:text="'Pacientes de ' + ${hospital.nombre}"></h2>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Género</th>
+                <th>Diagnóstico</th>
+                <th>Fecha de Cita</th>
+                <th>Número de Habitación</th>
+                <th>Doctor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paciente : ${listaPacientes}">
+                <td th:text="${paciente.id}"></td>
+                <td th:text="${paciente.nombre}"></td>
+                <td th:text="${paciente.edad}"></td>
+                <td th:text="${paciente.genero}"></td>
+                <td th:text="${paciente.diagnostico}"></td>
+                <td th:text="${#temporals.format(paciente.fecha_cita, 'dd/MM/yyyy')}"></td>
+                <td th:text="${paciente.numero_habitacion}"></td>
+                <td th:text="${paciente.doctor.nombre}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a th:href="@{/hospitales}">Volver a lista de hospitales</a>
+</body>
+</html>

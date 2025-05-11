@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
 </head>
 <body>
-<div th:fragment="navbar">
-  <nav>
-    <h3>Esto es un navbar</h3>
-    <li><a th:href="@{/hospitales}">Hospital</a></li>
-    <li><a th:href="@{/ControlladorDoctores}">Doctores</a></li>
-    <li><a th:href="@{/ControlladorPacientes}">Pacientes</a></li>
-
-  </nav>
-</div>
+    <div th:fragment="navbar">
+        <nav>
+            <ul>
+                <li><a th:href="@{/hospitales}">Hospitales</a></li>
+                <li><a th:href="@{/doctores}">Doctores</a></li>
+                <li><a th:href="@{/pacientes}">Pacientes</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>

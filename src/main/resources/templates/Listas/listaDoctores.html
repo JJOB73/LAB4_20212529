@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lista de Doctores</title>
 </head>
 <body>
-
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+    
+    <h2>Lista de Doctores</h2>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Hospital</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="doctor : ${listaDoctores}">
+                <td th:text="${doctor.id}"></td>
+                <td th:text="${doctor.nombre}"></td>
+                <td th:text="${doctor.especialidad}"></td>
+                <td th:text="${doctor.hospital != null ? doctor.hospital.nombre : ''}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

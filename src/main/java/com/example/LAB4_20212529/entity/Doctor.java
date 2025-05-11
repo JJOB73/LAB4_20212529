@@ -1,7 +1,7 @@
 package com.example.LAB4_20212529.entity;
 
-
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "doctor")
@@ -12,12 +12,14 @@ public class Doctor {
     private Integer id;
 
     private String nombre;
-
     private String especialidad;
 
     @ManyToOne
-    @JoinColumn(name= "hospital_id")
-    private Doctor doctor;
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
+
+    @OneToMany(mappedBy = "doctor")
+    private List<Paciente> pacientes;
 
     public Integer getId() {
         return id;
@@ -43,12 +45,20 @@ public class Doctor {
         this.especialidad = especialidad;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Hospital getHospital() {
+        return hospital;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(List<Paciente> pacientes) {
+        this.pacientes = pacientes;
     }
 }
 
