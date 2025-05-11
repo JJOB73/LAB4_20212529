@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Derivar Pacientes</title>
+</head>
+<body>
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+    
+    <h2>Derivar Pacientes</h2>
+    
+    <form th:action="@{/pacientes/derivar}" method="post">
+        <div style="margin-bottom: 15px;">
+            <label for="doctorOrigen">Derivar del doctor:</label>
+            <select name="doctorOrigenId" id="doctorOrigen" required>
+                <option value="">Seleccione un doctor</option>
+                <option th:each="doctor : ${listaDoctores}"
+                        th:value="${doctor.id}"
+                        th:text="${doctor.nombre + ' - ' + doctor.especialidad + ' (' + doctor.hospital.nombre + ')'}">
+                </option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="doctorDestino">Al doctor:</label>
+            <select name="doctorDestinoId" id="doctorDestino" required>
+                <option value="">Seleccione un doctor</option>
+                <option th:each="doctor : ${listaDoctores}"
+                        th:value="${doctor.id}"
+                        th:text="${doctor.nombre + ' - ' + doctor.especialidad + ' (' + doctor.hospital.nombre + ')'}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit">Derivar pacientes</button>
+        <a th:href="@{/pacientes}" class="button">Cancelar</a>
+    </form>
+</body>
+</html>

@@ -16,6 +16,7 @@
                 <th>Nombre</th>
                 <th>Especialidad</th>
                 <th>Hospital</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,11 +25,11 @@
                 <td th:text="${doctor.nombre}"></td>
                 <td th:text="${doctor.especialidad}"></td>
                 <td th:text="${doctor.hospital != null ? doctor.hospital.nombre : ''}"></td>
-
+                <td>
+                    <a th:href="@{'/doctor/' + ${doctor.id} + '/proximas-citas'}" class="button">Próximas citas</a>
+                </td>
             </tr>
         </tbody>
     </table>
-
-    <a th:href="@{/hospitales}">Volver a lista de hospitales</a>
 </body>
 </html>
