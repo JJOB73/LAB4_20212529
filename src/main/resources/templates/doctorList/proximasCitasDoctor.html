@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Próximas Citas del Doctor</title>
+</head>
+<body>
+    <div th:replace="fragmentos/navbar :: navbar"></div>
+    
+    <h2 th:text="'Próximas Citas - Dr. ' + ${doctor.nombre}"></h2>
+    <p th:text="'Hospital: ' + ${doctor.hospital.nombre}"></p>
+    <p th:text="'Especialidad: ' + ${doctor.especialidad}"></p>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Paciente</th>
+                <th>Edad</th>
+                <th>Género</th>
+                <th>Diagnóstico</th>
+                <th>Fecha Cita</th>
+                <th>N° Habitación</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(listaPacientes)}">
+
+        <td colspan="8">No hay citas pendientes</td>
+            </tr>
+            <tr th:each="paciente : ${listaPacientes}">
+                <td th:text="${paciente.id}"></td>
+                <td th:text="${paciente.nombre}"></td>
+                <td th:text="${paciente.edad}"></td>
+                <td th:text="${paciente.genero}"></td>
+                <td th:text="${paciente.diagnostico}"></td>
+                <td th:text="${#temporals.format(paciente.fecha_cita, 'dd/MM/yyyy')}"></td>
+                <td th:text="${paciente.numero_habitacion}"></td>
+                <td><span style="color: green;">Por atender</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <a th:href="@{/doctores}">Volver a lista de doctores</a>
+    </div>
+</body>
+</html>

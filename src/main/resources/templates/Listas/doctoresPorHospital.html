@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Doctores</title>
+    <title>Doctores del Hospital</title>
 </head>
 <body>
     <div th:replace="fragmentos/navbar :: navbar"></div>
     
-    <h2>Lista de Doctores</h2>
+    <h2 th:text="'Doctores del Hospital ' + (${hospital != null ? hospital.nombre : ''})"></h2>
     
     <table border="1">
         <thead>
@@ -15,20 +15,22 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Especialidad</th>
-                <th>Hospital</th>
             </tr>
         </thead>
         <tbody>
+            <tr th:if="${listaDoctores.empty}">
+                <td colspan="3">No hay doctores registrados en este hospital</td>
+            </tr>
             <tr th:each="doctor : ${listaDoctores}">
                 <td th:text="${doctor.id}"></td>
                 <td th:text="${doctor.nombre}"></td>
                 <td th:text="${doctor.especialidad}"></td>
-                <td th:text="${doctor.hospital != null ? doctor.hospital.nombre : ''}"></td>
-
             </tr>
         </tbody>
     </table>
 
-    <a th:href="@{/hospitales}">Volver a lista de hospitales</a>
+    <div style="margin-top: 20px;">
+        <a th:href="@{/hospitales}">Volver a lista de hospitales</a>
+    </div>
 </body>
 </html>
