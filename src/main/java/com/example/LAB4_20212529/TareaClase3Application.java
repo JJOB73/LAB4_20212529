@@ -1,4 +1,4 @@
-package com.example.tareaclase3;
+package com.example.LAB4_20212529;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
